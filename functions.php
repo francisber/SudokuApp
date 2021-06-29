@@ -67,7 +67,7 @@ function validateLineFromCell(array $row, int $i, int $j): array
                     $factor = $coordinate / 3;
                     //echo "coordenada es $coordinate y el factor es $factor",PHP_EOL;
                     //echo $coordinate + $i - 3 * floor($factor);
-                    $temporalCoordinatesErrors[] = ['x' => $coordinate + $i - 3 * floor($factor), 'y' =>  $j + floor($factor)];
+                    $temporalCoordinatesErrors[] = ['x' =>  $j + floor($factor), 'y' => $coordinate + $i - 3 * floor($factor)];
                 }
             }
         }
@@ -86,11 +86,11 @@ function validateLine(array $row, int $k, bool $isColumn): array
                 $analyzedNumbers[] = $entryRow;
                 if ($isColumn) {
                     foreach ($entryOfValue as $coordinate) {
-                        $temporalCoordinatesErrors[] = array('x' => $k, 'y' => $coordinate);
+                        $temporalCoordinatesErrors[] = array('x' => $coordinate, 'y' => $k);
                     }
                 } else {
                     foreach ($entryOfValue as $coordinate) {
-                        $temporalCoordinatesErrors[] = array('x' => $coordinate, 'y' => $k);
+                        $temporalCoordinatesErrors[] = array('x' => $k, 'y' => $coordinate);
                     }
                 }
             }
