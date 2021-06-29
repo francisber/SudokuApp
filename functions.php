@@ -1,14 +1,16 @@
 <?php
-function isFull(array $board): bool{
-    foreach ($board as $row){
-        foreach ($row as $entry){
-            if(is_null($entry)){
+function isFull(array $board): bool
+{
+    foreach ($board as $row) {
+        foreach ($row as $entry) {
+            if (is_null($entry)) {
                 return false;
             }
         }
     }
     return true;
 }
+
 function validateRow(array $board): array
 {
     $coordinatesErrorsRow = [];
@@ -46,8 +48,6 @@ function validateCell(array $board): array
                 }
             }
             $entryOfValue = array_merge($entryOfValue, validateLineFromCell($row, $i, $j));
-            //return $entryOfValue;
-
         }
     }
     return $entryOfValue;
@@ -62,12 +62,9 @@ function validateLineFromCell(array $row, int $i, int $j): array
             $entryOfValue = array_keys($row, $entryRow);
             if (count($entryOfValue) >= 2 && !in_array($entryRow, $analyzedNumbers)) {
                 $analyzedNumbers[] = $entryRow;
-                //echo json_encode($entryOfValue,JSON_PRETTY_PRINT),PHP_EOL,json_encode($row,JSON_PRETTY_PRINT);
                 foreach ($entryOfValue as $coordinate) {
                     $factor = $coordinate / 3;
-                    //echo "coordenada es $coordinate y el factor es $factor",PHP_EOL;
-                    //echo $coordinate + $i - 3 * floor($factor);
-                    $temporalCoordinatesErrors[] = ['x' =>  $j + floor($factor), 'y' => $coordinate + $i - 3 * floor($factor)];
+                    $temporalCoordinatesErrors[] = ['x' => $j + floor($factor), 'y' => $coordinate + $i - 3 * floor($factor)];
                 }
             }
         }
